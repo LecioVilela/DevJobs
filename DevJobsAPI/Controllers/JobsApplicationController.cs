@@ -12,7 +12,7 @@ namespace DevJobsAPI.Controllers
     public class JobsApplicationController : ControllerBase
     {
         /// <summary>
-        /// Save a new job
+        /// Receive a job application
         ///</summary>
         [HttpPost("ReceiveApplication")]
         [ProducesResponseType(StatusCodes.Status201Created)]

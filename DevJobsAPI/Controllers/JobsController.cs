@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DevJobs.Application.InputModels;
+using DevJobs.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevJobsAPI.Controllers
@@ -16,9 +12,9 @@ namespace DevJobsAPI.Controllers
         ///</summary>
         [HttpPost("CreateJob")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Post([FromBody] JobInputModel jobInputModel)
+        public async Task<IActionResult> Post([FromBody] Job job)
         {
-            return Ok(jobInputModel);
+            return Ok(job);
         }
 
         /// <summary>
@@ -26,9 +22,9 @@ namespace DevJobsAPI.Controllers
         /// </summary>
         [HttpPatch("EditJob")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Patch([FromBody] JobInputModel jobInputModel)
+        public async Task<IActionResult> Patch([FromBody] Job job)
         {
-            return Ok(jobInputModel);
+            return Ok(job);
         }
 
         /// <summary>
