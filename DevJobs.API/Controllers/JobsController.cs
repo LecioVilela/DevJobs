@@ -1,3 +1,4 @@
+using DevJobs.Application.Services;
 using DevJobs.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,21 @@ namespace DevJobsAPI.Controllers
     [Route("api/[controller]")]
     public class JobsController : ControllerBase
     {
+        private readonly IJobService _jobService;
+
+        public JobsController(IJobService jobService)
+        {
+            _jobService = jobService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(string query)
+        {
+            var jobs = _jobService.GetAll(query);
+
+            return Ok(jobs);
+        }
+
         /// <summary>
         /// Save a new job
         ///</summary>
