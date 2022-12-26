@@ -8,10 +8,13 @@ namespace DevJobs.Infrastructure.Persistence
     {
         public DevJobsDbContext(DbContextOptions<DevJobsDbContext> options) : base(options)
         {
-            new Job("FullStack Developer", "Create and building APIs", "DevLand", "https://devland.net", true, 5000, "https://devland.net/jobs/fullstackdeveloper1", 1);
+            Jobs = new List<Job>
+            {
+                new Job("FullStack Developer", "Create and building APIs", "DevLand", "https://devland.net", true, 5000, "https://devland.net/jobs/fullstackdeveloper1", 1)
+            };
         }
-        public DbSet<Job> Jobs { get; set; }
-        public DbSet<JobApplication> JobApplications { get; set; }
+        public List<Job> Jobs { get; set; }
+        public List<JobApplication> JobApplications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
