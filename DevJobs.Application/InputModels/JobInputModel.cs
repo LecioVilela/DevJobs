@@ -2,19 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevJobs.Core.Enum;
 
 namespace DevJobs.Application.InputModels
 {
     public class JobInputModel
     {
-        public int Job_Id { get; set; }
-        public string Job_Title { get; set; }
-        public string Job_Desc { get; set; }
-        public string Job_Company { get; set; }
-        public string Company_Url { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Company { get; set; }
+        public string CompanyUrl { get; set; }
         public bool Remote { get; set; }
-        public decimal Job_Salary { get; set; }
-        public string Job_Subscribe_Url { get; set; }
-        public int Job_Level { get; set; }
+        public decimal Salary { get; set; }
+        public string SubscribeUrl { get; set; }
+        public JobLevelEnum Level { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace DevJobsAPI.Controllers
         /// <summary>
         /// Save a new job
         ///</summary>
-        [HttpPost("CreateJob")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Post([FromBody] Job job)
         {
@@ -20,21 +20,21 @@ namespace DevJobsAPI.Controllers
         /// <summary>
         /// Edit a job
         /// </summary>
-        [HttpPatch("EditJob")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Patch([FromBody] Job job)
         {
-            return Ok(job);
+            return NoContent();
         }
 
         /// <summary>
         /// Delete a job
         /// </summary>
-        [HttpDelete("DeleteJob/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok();
+            return NoContent();
         }
     }
 }

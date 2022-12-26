@@ -7,8 +7,8 @@ namespace DevJobs.Application.InputModels
 {
     public class JobApplicationInputModel
     {
-        public string Candidates_Name { get; set; }
-        public string Candidates_Email { get; set; }
-        public string Candidates_Linkedin { get; set; }
+        public string CandidatesName { get; set; }
+        public string CandidatesEmail { get; set; }
+        public string CandidatesLinkedin { get; set; }
     }
 }
