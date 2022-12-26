@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace DevJobsAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/jobs/{id}/applications")]
     public class JobsApplicationController : ControllerBase
     {
         /// <summary>
         /// Receive a job application
         ///</summary>
-        [HttpPost("ReceiveApplication")]
+        [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Post([FromBody] JobApplicationInputModel jobApplicationInputModel)
+        public async Task<IActionResult> Post(int id, [FromBody] JobApplicationInputModel jobApplicationInputModel)
         {
             return Ok(jobApplicationInputModel);
         }

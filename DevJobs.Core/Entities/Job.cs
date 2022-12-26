@@ -17,6 +17,7 @@ namespace DevJobs.Core.Entities
             Salary = salary;
             SubscribeUrl = subscribeUrl;
             Level = level;
+            CreatedAt = DateTime.Now;
         }
 
         public string Title { get; private set; }
@@ -27,5 +28,6 @@ namespace DevJobs.Core.Entities
         public decimal Salary { get; private set; }
         public string SubscribeUrl { get; private set; }
         public int Level { get; private set; }
+        public DateTime CreatedAt { get; private set; }
     }
 }
