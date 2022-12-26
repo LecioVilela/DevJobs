@@ -11,4 +11,8 @@
     <ProjectReference Include="..\DevJobs.Infrastructure\DevJobs.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.12" />
+  </ItemGroup>
+
 </Project>
