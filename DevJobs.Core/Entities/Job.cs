@@ -29,5 +29,12 @@ namespace DevJobs.Core.Entities
         public string SubscribeUrl { get; private set; }
         public int Level { get; private set; }
         public DateTime CreatedAt { get; private set; }
+
+        public void Update(string title, string description, decimal salary)
+        {
+            Title = title;
+            Description = description;
+            Salary = salary;
+        }
     }
 }

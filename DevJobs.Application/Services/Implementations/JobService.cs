@@ -24,22 +24,34 @@ namespace DevJobs.Application.Services.Implementations
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == id);
         }
 
         public List<JobViewModel> GetAll(string query)
         {
-            throw new NotImplementedException();
+            var job = _dbContext.Jobs;
+
+            var jobViewModel = job
+            .Select(j => new JobViewModel(j.Title, j.CreatedAt))
+            .ToList();
+
+            return jobViewModel;
         }
 
         public JobViewModel GetById(int id)
         {
-            throw new NotImplementedException();
+            var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == id);
+
+            var jobViewModel = new JobViewModel(job.Title, job.CreatedAt);
+
+            return jobViewModel;
         }
 
         public void Update(UpdateJobInputModel inputModel)
         {
-            throw new NotImplementedException();
+            var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == inputModel.Id);
+
+            job.Update(inputModel.Title, inputModel.Description, inputModel.Salary);
         }
     }
 }
