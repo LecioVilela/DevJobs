@@ -1,3 +1,4 @@
+using DevJobs.Application.InputModels;
 using DevJobs.Application.Services;
 using DevJobs.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -23,14 +24,31 @@ namespace DevJobsAPI.Controllers
             return Ok(jobs);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id) {
+            // Usar o service para consultar
+            var job = _jobService.GetById(id);
+
+            if (job is null)
+                return NotFound();
+
+            return Ok(job);
+        }
+
         /// <summary>
         /// Save a new job
         ///</summary>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Post([FromBody] Job job)
+        public async Task<IActionResult> Post([FromBody] NewJobInputModel job)
         {
-            return Ok(job);
+            var id = _jobService.Create(job);
+
+            return CreatedAtAction(nameof(GetById), new { id }, job);
+            // Retornar 201 com o payload no corpo da resposta
+            // Atribuir ao header de retorno "location" o resultado de um processamento
+            // utilizando os parâmetros passados
+            // location: localhost:12345/api/Jobs/123 GET
         }
 
         /// <summary>
@@ -38,8 +56,10 @@ namespace DevJobsAPI.Controllers
         /// </summary>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> Patch([FromBody] Job job)
+        public async Task<IActionResult> Update([FromBody] UpdateJobInputModel job)
         {
+            _jobService.Update(job);
+
             return NoContent();
         }
 
@@ -50,6 +70,8 @@ namespace DevJobsAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
+            _jobService.Delete(id);
+            
             return NoContent();
         }
     }

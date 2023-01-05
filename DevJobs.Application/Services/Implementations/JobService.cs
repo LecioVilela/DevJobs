@@ -18,6 +18,7 @@ namespace DevJobs.Application.Services.Implementations
             var job = new Job(inputModel.Title, inputModel.Description, inputModel.Company, inputModel.CompanyUrl, inputModel.Remote, inputModel.Salary, inputModel.SubscribeUrl, inputModel.Level);
 
             _dbContext.Jobs.Add(job);
+            _dbContext.SaveChanges();
 
             return job.Id;
         }
@@ -42,6 +43,9 @@ namespace DevJobs.Application.Services.Implementations
         {
             var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == id);
 
+            if (job is null) 
+                return null;
+                
             var jobViewModel = new JobViewModel(job.Title, job.CreatedAt);
 
             return jobViewModel;
@@ -52,6 +56,8 @@ namespace DevJobs.Application.Services.Implementations
             var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == inputModel.Id);
 
             job.Update(inputModel.Title, inputModel.Description, inputModel.Salary);
+
+            _dbContext.SaveChanges();
         }
     }
 }
