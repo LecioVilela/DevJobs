@@ -7,12 +7,14 @@ namespace DevJobs.Application.ViewModels
 {
     public class JobViewModel
     {
-        public JobViewModel(string tittle, DateTime createdAt)
+        public JobViewModel(int id, string tittle, DateTime createdAt)
         {
+            Id = id;
             Tittle = tittle;
             CreatedAt = createdAt;
         }
 
+        public int Id { get; private set; }
         public string Tittle { get; private set; }
         public DateTime CreatedAt { get; private set; }
     }

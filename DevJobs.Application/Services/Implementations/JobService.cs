@@ -18,6 +18,7 @@ namespace DevJobs.Application.Services.Implementations
             var job = new Job(inputModel.Title, inputModel.Description, inputModel.Company, inputModel.CompanyUrl, inputModel.Remote, inputModel.Salary, inputModel.SubscribeUrl, inputModel.Level);
 
             _dbContext.Jobs.Add(job);
+            _dbContext.SaveChanges();
 
             return job.Id;
         }
@@ -25,6 +26,7 @@ namespace DevJobs.Application.Services.Implementations
         public void Delete(int id)
         {
             var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == id);
+            _dbContext.SaveChanges();
         }
 
         public List<JobViewModel> GetAll(string query)
@@ -32,7 +34,7 @@ namespace DevJobs.Application.Services.Implementations
             var job = _dbContext.Jobs;
 
             var jobViewModel = job
-            .Select(j => new JobViewModel(j.Title, j.CreatedAt))
+            .Select(j => new JobViewModel(j.Id, j.Title, j.CreatedAt))
             .ToList();
 
             return jobViewModel;
@@ -42,7 +44,12 @@ namespace DevJobs.Application.Services.Implementations
         {
             var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == id);
 
-            var jobViewModel = new JobViewModel(job.Title, job.CreatedAt);
+            if (job is null)
+            {
+                return null;
+            }
+
+            var jobViewModel = new JobViewModel(job.Id, job.Title, job.CreatedAt);
 
             return jobViewModel;
         }
@@ -52,6 +59,8 @@ namespace DevJobs.Application.Services.Implementations
             var job = _dbContext.Jobs.SingleOrDefault(j => j.Id == inputModel.Id);
 
             job.Update(inputModel.Title, inputModel.Description, inputModel.Salary);
+
+            _dbContext.SaveChanges();
         }
     }
 }
