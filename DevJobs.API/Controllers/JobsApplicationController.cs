@@ -20,11 +20,11 @@ namespace DevJobsAPI.Controllers
         ///</summary>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Post([FromBody] NewApplicationInputModel jobApplicationInputModel)
+        public async Task<IActionResult> Post([FromBody] NewApplicationInputModel newApplicationInputModel)
         {
-            var id = _applicationService.Create(jobApplicationInputModel);
+            var id = _applicationService.Create(newApplicationInputModel);
 
-            return CreatedAtAction(nameof(GetById), new { id }, jobApplicationInputModel);
+            return CreatedAtAction(nameof(GetById), new { id }, newApplicationInputModel);
 
             // Return 201 as the payload from the response body.
         }
