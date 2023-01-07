@@ -36,7 +36,7 @@ namespace DevJobs.Application.Services.Implementations
             var jobApplication = _dbContext.JobApplications;
 
             var applicationViewModel = jobApplication
-            .Select(j => new JobApplicationViewModel(j.Id, j.CandidatesName, j.CandidatesEmail))
+            .Select(j => new JobApplicationViewModel(j.Id, j.CandidatesName, j.CandidatesEmail, j.SendedAt))
             .ToList();
 
             return applicationViewModel;
@@ -51,7 +51,7 @@ namespace DevJobs.Application.Services.Implementations
                 return null;
             }
 
-            var applicationViewModel = new JobApplicationViewModel(jobApplication.Id, jobApplication.CandidatesName, jobApplication.CandidatesEmail);
+            var applicationViewModel = new JobApplicationViewModel(jobApplication.Id, jobApplication.CandidatesName, jobApplication.CandidatesEmail, jobApplication.SendedAt);
 
             return applicationViewModel;
         }
