@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DevJobsAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/jobs/{id}/applications")]
     public class JobsApplicationController : ControllerBase
     {
         private readonly IJobApplicationService _applicationService;
@@ -32,7 +32,7 @@ namespace DevJobsAPI.Controllers
         /// <summary>
         /// Request job application informartion by id.
         ///</summary>
-        [HttpGet("{id}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById(int id)
         {
