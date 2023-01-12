@@ -9,10 +9,11 @@ It's running on dotnet core 6, Clean Architecture and Domain Driven Design, Orie
 ![dotnetcore](https://www.roundthecode.com/wp-content/uploads/2021/08/background-1.png)
 
 The API is working for creating, updating, deleting and getting.
+
 ## Running the API from the command line
 * Clone this repository:
 ```
-    $ git clone https://github.com/LecioVilela/DevJobs.git
+    git clone https://github.com/LecioVilela/DevJobs.git
 ```
 * Make sure that you have at least the dotnet 6 sdk:
 ```
@@ -20,11 +21,11 @@ The API is working for creating, updating, deleting and getting.
 ```
 * Build the project with the command <strong>dotnet build</strong> at:
 ```
-      DevJobs.API
+    DevJobs.API
 ```
 * For debug:
 ```
-     Press F5 in Visual Studio or Visual Studio Code
+    Press F5 in Visual Studio or Visual Studio Code
 ```
 * For requests like Postman or Insomnia:
 ```
